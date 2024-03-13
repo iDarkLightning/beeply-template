@@ -14,6 +14,7 @@ const defineConstants: () => Plugin = () => ({
 
 export default createApp({
   server: {
+    preset: "vercel",
     compressPublicAssets: {
       gzip: true,
     },
