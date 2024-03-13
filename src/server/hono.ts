@@ -6,6 +6,8 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 export const hono = new Hono().basePath("/api");
 
+hono.get("/healthcheck", (ctx) => ctx.json({ ok: true }));
+
 hono.route("/auth", authRouter);
 
 hono.use("/trpc/*", (ctx) =>
