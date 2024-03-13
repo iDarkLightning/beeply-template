@@ -5,9 +5,9 @@ export const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
   meta: () => [{ title: "Home" }],
-  // loader: async ({ context }) => {
-  //   return context.queryUtils.queryMe.ensureData();
-  // },
+  loader: async ({ context }) => {
+    return context.queryUtils.queryMe.ensureData();
+  },
   component: lazyRouteComponent(
     () => import("src/app/features/home-view"),
     "HomeView"

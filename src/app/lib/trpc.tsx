@@ -48,7 +48,7 @@ export const createLinks = (headers?: Headers) => {
       enabled: () => import.meta.env.DEV && typeof window !== "undefined",
     }),
     httpBatchLink({
-      url: "http://localhost:3000/api/trpc",
+      url: `${__APP_URL__}/api/trpc`,
       fetch: (url, options) =>
         fetch(url, { ...options, credentials: "include" }),
       headers,
