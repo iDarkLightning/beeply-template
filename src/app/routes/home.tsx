@@ -1,4 +1,4 @@
-import { createRoute, defer, lazyRouteComponent } from "@tanstack/react-router";
+import { createRoute, lazyRouteComponent } from "@tanstack/react-router";
 import { rootRoute } from "./__root";
 
 export const homeRoute = createRoute({
@@ -6,15 +6,7 @@ export const homeRoute = createRoute({
   path: "/",
   meta: () => [{ title: "Home" }],
   loader: async ({ context }) => {
-    await context.queryUtils.queryMe.ensureData();
-
-    return {
-      slow: defer(
-        new Promise<string>((resolve) =>
-          setTimeout(() => resolve("data"), 1000)
-        )
-      ),
-    };
+    return context.queryUtils.queryMe.ensureData();
   },
   component: lazyRouteComponent(
     () => import("src/app/features/home-view"),
